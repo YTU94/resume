@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>资深前端工程师 · 个人简历</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /*
+      Design system
+      Type: 56 / 32 / 20 / 16 / 13
+      Color: warm off-white bg, near-black text, single blue accent
+      Spacing: 8 / 16 / 24 / 32 / 48 / 64
+      Layout: single-column editorial, max 680px
+    */
+    :root {
+      --bg: oklch(0.985 0.006 85);
+      --surface: oklch(0.97 0.005 85);
+      --text: oklch(0.18 0.015 260);
+      --text-muted: oklch(0.48 0.02 260);
+      --accent: oklch(0.48 0.14 255);
+      --accent-soft: oklch(0.94 0.03 255);
+      --border: oklch(0.88 0.01 260);
+      --font-sans: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+      --font-mono: "IBM Plex Mono", monospace;
+      --max-width: 42.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 48px 24px 80px;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: 48px;
+    }
+
+    /* Header */
+    .hero {
+      display: grid;
+      gap: 16px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    .hero .tagline {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      text-wrap: pretty;
+      max-width: 38rem;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      font-size: 0.875rem;
+      font-family: var(--font-mono);
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .contact a:hover { border-bottom-color: var(--accent); }
+
+    .contact span { color: var(--text-muted); }
+
+    /* Sections */
+    section { display: grid; gap: 24px; }
+
+    .section-title {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 16px;
+      font-size: 0.9375rem;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-row:last-child { border-bottom: none; }
+
+    .skill-label {
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Highlights */
+    .highlights {
+      display: grid;
+      gap: 12px;
+    }
+
+    .highlight-item {
+      font-size: 0.9375rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--accent-soft);
+      text-wrap: pretty;
+    }
+
+    .highlight-item strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Experience */
+    .job {
+      display: grid;
+      gap: 16px;
+    }
+
+    .job-header {
+      display: grid;
+      gap: 4px;
+    }
+
+    .job-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-wrap: balance;
+    }
+
+    .job-meta {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .job-desc {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      text-wrap: pretty;
+    }
+
+    .job-block {
+      display: grid;
+      gap: 8px;
+    }
+
+    .job-block h4 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    .job-block ul {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      padding-left: 0;
+    }
+
+    .job-block li {
+      font-size: 0.9375rem;
+      padding-left: 1rem;
+      position: relative;
+      text-wrap: pretty;
+    }
+
+    .job-block li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* Projects */
+    .project {
+      display: grid;
+      gap: 8px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .project h3 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+    }
+
+    .project .project-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .project p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      text-wrap: pretty;
+    }
+
+    .project ul {
+      list-style: none;
+      display: grid;
+      gap: 4px;
+    }
+
+    .project li {
+      font-size: 0.875rem;
+      padding-left: 1rem;
+      position: relative;
+      text-wrap: pretty;
+    }
+
+    .project li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* Education */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9375rem;
+    }
+
+    .edu-table th,
+    .edu-table td {
+      text-align: left;
+      padding: 12px 16px 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-table th {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .edu-table tr:last-child td,
+    .edu-table tr:last-child th { border-bottom: none; }
+
+    footer {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 540px) {
+      .skill-row { grid-template-columns: 1fr; gap: 4px; }
+      body { padding: 32px 16px 64px; }
+    }
+
+    @media print {
+      body { padding: 0; background: white; }
+      .page { gap: 32px; }
+      .contact a { color: var(--text); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <h1>资深前端工程师</h1>
+      <p class="tagline">6+ 年大厂与创业公司经验 · 低代码 / 连接器平台 · ToB SaaS 工程化 · 具备产品落地能力</p>
+      <div class="contact">
+        <a href="mailto:ytu_94@163.com">ytu_94@163.com</a>
+        <span>私信联系</span>
+        <a href="https://github.com/YTU94" target="_blank" rel="noopener">github.com/YTU94</a>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="section-title">核心能力</h2>
+      <div class="highlights">
+        <p class="highlight-item"><strong>低代码平台架构</strong> — 可视化配置引擎、JSON Schema 动态表单、DSL 与流程编排</p>
+        <p class="highlight-item"><strong>企业连接器生态</strong> — OAuth2 / OpenAPI / Webhook，400+ 第三方应用配置化集成</p>
+        <p class="highlight-item"><strong>复杂 ToB 工程化</strong> — Monorepo、Schema 驱动 UI、组件体系与跨团队联调</p>
+        <p class="highlight-item"><strong>0→1 产品推进</strong> — 需求澄清、方案评审、排期协同，兼具研发与 PM 视角</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">技术栈</h2>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-label">语言框架</span>
+          <span>JavaScript · TypeScript · React · Vue 3</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">状态管理</span>
+          <span>Redux · Zustand · jotai</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">工程化</span>
+          <span>Webpack · Vite · Monorepo（pnpm workspace）</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">组件体系</span>
+          <span>Ant Design · dingtalk-design 自研组件</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">平台化</span>
+          <span>可视化配置引擎 · DSL · OpenAPI · OAuth2 · Skill 技能包</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">工作经历</h2>
+
+      <article class="job">
+        <div class="job-header">
+          <h3 class="job-title">钉钉（阿里巴巴）— 前端工程师 → 资深前端工程师</h3>
+          <p class="job-meta">2022 — 2024 · 约 2 年半</p>
+          <p class="job-desc">负责钉钉开放平台核心前端，覆盖 API 商业化、智能市场转型、低代码连接器平台。</p>
+        </div>
+        <div class="job-block">
+          <h4>PassPro · 开放 API 商业化</h4>
+          <ul>
+            <li>参与产品方案设计与核心前端研发，推动开放 API 进入商业化体系</li>
+            <li>实现 API 独立增购包与 Quota 容量管理（用量统计、阈值告警、超配降级）</li>
+            <li>基于 Schema 驱动套餐差异化渲染，跨开放平台 / 商业化 / 计费团队联调交付</li>
+          </ul>
+        </div>
+        <div class="job-block">
+          <h4>钉钉智能市场 · 应用中心转型</h4>
+          <ul>
+            <li>主导应用中心 → 智能市场转型，完成小程序架构到纯 H5 迁移</li>
+            <li>落地 AI 辅助增强能力，核心页面交付周期缩短约 40%</li>
+            <li>首屏 FCP 优化至 1.2s 以内（SSR 预渲染 + 资源预加载）</li>
+          </ul>
+        </div>
+        <div class="job-block">
+          <h4>悟空连接器 & 企业自建应用</h4>
+          <ul>
+            <li>主导连接器平台前端架构：配置引擎、动作/触发器编排、OAuth2 / API Key 认证链路</li>
+            <li>以研发 + PM 双角色推进 0→1，设计 Skill 开发框架与企业自建应用接入方案</li>
+            <li>与多家大客户共创，沉淀标准化接入 SOP</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="job-header">
+          <h3 class="job-title">乌鸫科技 — 资深前端工程师</h3>
+          <p class="job-meta">2022 — 2024 · 近 3 年 · 钉钉生态合作伙伴</p>
+        </div>
+        <div class="job-block">
+          <ul>
+            <li>参与连接器生态建设，负责 Skill 开发方案设计与客户侧技术共创</li>
+            <li>主导多个连接器接入项目实施：自定义配置页、字段映射、联调工具</li>
+            <li>维护平台前端基础设施：组件库、请求中间件、统一错误处理</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="job-header">
+          <h3 class="job-title">大搜车 — 前端工程师</h3>
+          <p class="job-meta">2020 — 2022 · 近 2 年</p>
+        </div>
+        <div class="job-block">
+          <ul>
+            <li>负责 DMS 核心模块（库存、订单、财务报表）研发与维护</li>
+            <li>主导 Vue 2 → Vue 3 + TypeScript 迁移，制定规范并推动团队落地</li>
+            <li>使用 uni-app 实现 H5 / 小程序多端复用；搭建 Sentry 监控与 CI/CD 流水线</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">重点项目</h2>
+
+      <article class="project">
+        <h3>悟空连接器平台</h3>
+        <p class="project-meta">钉钉 · 2023 — 2025</p>
+        <p>钉钉低代码生态核心组件，连接第三方应用与钉钉工作流、智能表单、审批场景。</p>
+        <ul>
+          <li>基于 JSON Schema 构建动态表单引擎（条件显示、依赖联动、远程数据源）</li>
+          <li>实现调试面板：Mock 请求、实时日志、字段映射预览</li>
+          <li>封装 OAuth2 授权组件，统一 PKCE、Client Credentials 等变体流程</li>
+          <li>设计可扩展 DSL，支持 400+ 应用零硬编码差异化配置</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <h3>PassPro · API 商业化</h3>
+        <p class="project-meta">钉钉 · 2022 — 2023</p>
+        <ul>
+          <li>API Quota 可视化组件：实时用量、阈值预警、超配降级提示</li>
+          <li>增购包下单流程对接商业化结算链路，保障幂等性与异常兜底</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <h3>钉钉智能市场转型</h3>
+        <p class="project-meta">钉钉 · 2023 — 2024</p>
+        <ul>
+          <li>抽象页面路由层复用组件逻辑，迁移成本降低约 50%</li>
+          <li>AI 辅助开发：样板代码、单测、接口 Mock，交付效率提升约 40%</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <h3>企业自建应用 · Skill 方案</h3>
+        <p class="project-meta">钉钉 / 乌鸫 · 2023 — 2025</p>
+        <ul>
+          <li>设计 Skill Manifest 规范（类 OpenAPI），覆盖参数、鉴权、调用约束</li>
+          <li>构建可视化调试工具；沉淀 10+ 行业 Skill 模板</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">教育背景</h2>
+      <table class="edu-table">
+        <thead>
+          <tr>
+            <th>学校</th>
+            <th>专业</th>
+            <th>学历</th>
+            <th>时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>安徽建筑大学</td>
+            <td>信息与计算科学</td>
+            <td>本科</td>
+            <td>2013 — 2017</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>简历更新于 2026 年 6 月</footer>
+  </main>
+</body>
+</html>
