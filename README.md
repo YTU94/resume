@@ -48,7 +48,7 @@
 
 | 领域 | 技术 |
 |---|---|
-| 语言 / 框架 | JavaScript · TypeScript · React · Vue 3 |
+| 语言 / 框架 | JavaScript · TypeScript · React · Vue |
 | 状态管理 | Redux · Zustand · jotai |
 | 工程化 | Webpack · Vite · Monorepo（pnpm workspace） |
 | 组件体系 | Ant Design · dingtalk-design 自研组件 |
@@ -92,13 +92,11 @@
 - **标准接入体系**：主导 OAuth 2.0 / OAuth 2.1 + MCP 统一接入方案的前端设计，覆盖授权配置、连接调试、凭证管理与发布全链路
 - **端侧 Plugin 连接器**：设计自定义 Skill 的端侧 Plugin 内置方案，将客户端原生能力封装为标准连接器，扩展 Agent 工具调用边界
 - **REST API → MCP 集成**：提出三方 REST API 包装为 MCP 服务的连接器集成方案，实现非 MCP 原生系统的低改造接入
-- **平台工程化**：基于 JSON Schema 配置引擎与前端 DSL，支撑 400+ 应用差异化连接器配置，配合 Mock 调试面板降低联调成本
 
 **技术方案**
 - **多协议统一接入层**：OAuth 2.0 / 2.1 负责身份授权与凭证生命周期，MCP 负责 Tool 发现、调用与上下文传递；前端抽象统一连接器配置模型，屏蔽协议差异
 - **端侧 Plugin 内置**：自定义 Skill 通过端侧 Plugin 注册为连接器，在 Agent 编排层以 MCP Tool 形态统一暴露，兼顾端原生能力与平台标准化
 - **REST → MCP 协议适配**：三方 REST API 经 Schema 映射（路径、参数、响应）+ MCP 协议适配层包装为标准连接器，存量系统低改造接入
-- **JSON Schema 配置引擎**：400+ 应用差异化连接器表单由 Schema + 前端 DSL 驱动渲染，配合 Mock 调试面板实现配置即联调，降低接入与排障成本
 
 ---
 
